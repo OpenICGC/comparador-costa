@@ -40,6 +40,7 @@ $(function() {
     layers: layer1,
     format: 'image/jpeg',
     transparent: true,
+    crs: crs25831,
     attribution : attribution1,
 });
 
@@ -88,7 +89,7 @@ $(function() {
     $('.panel-sticky').hide();
   });
 
-  $('.list-booksmarks').on('changed.bs.select', function (e, clickedIndex, newValue, oldValue) {
+  $('#list-booksmarks').on('changed.bs.select', function (e, clickedIndex, newValue, oldValue) {
     var selectedD = $(this).find('option').eq(clickedIndex).val();
     var center = hash.parseHash(selectedD);
     map.setView(center.center, center.zoom);
@@ -111,11 +112,41 @@ $(function() {
     var feature = features[i];
     list += "<option value='#11/"+feature.geometry.coordinates[1]+"/"+feature.geometry.coordinates[0]+"'>"+feature.properties.NOM+"</option>"
   }
-  $('.list-booksmarks').append(list);
+  $('#list-booksmarks').append(list);
 
-  $('.list-booksmarks').removeClass('hide');
+  $('#list-booksmarks').removeClass('hide');
 
-  $('.list-booksmarks').selectpicker('refresh');
+  $('#list-booksmarks').selectpicker('refresh');
+  
+  $('#list-ortos1').on('changed.bs.select', function (e, clickedIndex, newValue, oldValue) {
+    var selectedD = $(this).find('option').eq(clickedIndex).val();
+    var params = selectedD.split("@#_#@");
+    myLayer1.setUrl(params[0]).setParams({layers: params[1]});
+    myLayer3.setUrl(params[0]).setParams({layers: params[1]});
+  });
+
+  $('#list-ortos2').on('changed.bs.select', function (e, clickedIndex, newValue, oldValue) {
+    var selectedD = $(this).find('option').eq(clickedIndex).val();
+    var params = selectedD.split("@#_#@");
+    myLayer2.setUrl(params[0]).setParams({layers: params[1]});
+    myLayer4.setUrl(params[0]).setParams({layers: params[1]});
+  });
+
+  var list2 = "";
+  for(var i = 0, length = ortos.length; i < length; i++){
+    var orto = ortos[i];
+    list2 += "<option value='"+orto.url+"@#_#@"+orto.layer+"'>"+orto.label+"</option>"
+  }
+
+  $('#list-ortos1').append(list2);
+  $('#list-ortos1').removeClass('hide');
+  $('#list-ortos1').selectpicker('refresh');
+  $('#list-ortos1').selectpicker('val', servicio1+'@#_#@'+layer1);
+
+  $('#list-ortos2').append(list2);
+  $('#list-ortos2').removeClass('hide');
+  $('#list-ortos2').selectpicker('refresh');
+  $('#list-ortos2').selectpicker('val', servicio2+'@#_#@'+layer2);
 
   $('.info-btn').on('click',function(){
     $('#infomodal').modal('show');

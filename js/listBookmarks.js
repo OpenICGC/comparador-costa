@@ -74,3 +74,9 @@ var bookmarks = {
 { "type": "Feature", "properties": { "NOM": "Blanes", "LON": "2.795363366603851", "LAT": "41.674194035958052" }, "geometry": { "type": "Point", "coordinates": [ 2.795363366603851, 41.674194035958052 ] } }
 ]
 };
+
+var ortos = [
+    {"url": "http://mapcache.icc.cat/map/bases/service?", "layer": "orto", "label": "Ortofoto vigent"},
+    {"url": "http://mapcache.icc.cat/map/costa/service/service?", "layer": "costa2701", "label": "Temporal gener 2017"},
+    {"url": "http://geoserveis.icgc.cat/icc_mapesbase/wms/service?", "layer": "mtc5m", "label": "Mapa 1:5.000"},
+];
