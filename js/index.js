@@ -16,8 +16,8 @@ $(function() {
   var layer1 = 'orto';
   var attribution1 = 'Mapa &copy; <a href="http://www.icgc.cat">Institut Cartogràfic i Geològic de Catalunya</a>';
 
-  var servicio2 = 'http://mapcache.icc.cat/map/costa/service/service?';
-  var layer2 = 'costa2701';
+  var servicio2 = 'https://geoserveis.icgc.cat/icgc_costa201803/wms/service?';
+  var layer2 = 'costa1803';
   var attribution2 = 'Mapa &copy; <a href="http://www.icgc.cat">Institut Cartogràfic i Geològic de Catalunya</a>';
 
   var myLayer1 = L.tileLayer.wms(servicio1, {
