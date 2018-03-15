@@ -122,5 +122,4 @@ var ortos = [
     {"url": "http://mapcache.icc.cat/map/bases/service?", "layer": "orto", "label": "Ortofoto 2016"},
     {"url": "http://mapcache.icc.cat/map/costa/service/service?", "layer": "costa2701", "label": "Temporal gener 2017"},
     {"url": "https://geoserveis.icgc.cat/icgc_costa201803/wms/service?", "layer": "costa1803", "label": "Temporal març 2018"},
-    {"url": "http://mapcache.icc.cat/map/bases/service?", "layer": "topo", "label": "Topo"},
 ];
