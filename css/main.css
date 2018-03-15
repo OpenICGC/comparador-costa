@@ -216,6 +216,10 @@ footer div.row.links div span{
     background-color: #4496a1 !important;
 }
 
+.dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover {
+  color: #f99;
+}
+
 @media (max-width: 768px) and (orientation:landscape) {
 
     header .title{

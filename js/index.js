@@ -8,9 +8,15 @@ $(function() {
   var initPoint = [41.6480, 2.7712];
   var initZoom = 11;
   var maxZoom = 11;
-  var map = L.map('mapid',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom});
-  var map1 = L.map('mapid1',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom});
-  var map2 = L.map('mapid2',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom});
+  /*
+  var bounds = L.geoJSON(bookmarks_2018).getBounds();
+  var maxBounds = [[bounds.getSouth(),bounds.getWest()],[bounds.getNorth(),bounds.getEast()]];
+  */
+  var maxBounds = [[41.4346, 2.2439],[42.330, 3.330]];
+
+  var map = L.map('mapid',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
+  var map1 = L.map('mapid1',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
+  var map2 = L.map('mapid2',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
 
   var servicio1 = 'http://mapcache.icc.cat/map/bases/service?';
   var layer1 = 'orto';
@@ -95,7 +101,27 @@ $(function() {
     map.setView(center.center, center.zoom);
   });
 
-  var features = bookmarks.features;
+  function updateBookmarks(total, subgroup){
+    var features = total.features;
+    features.sort(compare);
+    var list = [];
+    for(var i = 0, length = features.length; i < length; i++){
+      var feature = features[i];
+      if (null !== subgroup && !findObjectByNOM(subgroup.features, feature.properties.NOM)){
+        list.push("<option value='#11/"+feature.geometry.coordinates[1]+"/"+feature.geometry.coordinates[0]+"' disabled class='disabled'>"+feature.properties.NOM+"</option>");
+      }else{
+        list.push("<option value='#11/"+feature.geometry.coordinates[1]+"/"+feature.geometry.coordinates[0]+"'>"+feature.properties.NOM+"</option>");
+      }
+    }
+
+    $('#list-booksmarks').empty();
+
+    $('#list-booksmarks').append(list.join(""));
+
+    $('#list-booksmarks').removeClass('hide');
+
+    $('#list-booksmarks').selectpicker('refresh');
+  }
 
   function compare(a,b) {
     if (a.properties.NOM < b.properties.NOM)
@@ -105,24 +131,37 @@ $(function() {
     return 0;
   }
 
-  features.sort(compare);
-
-  var list = "";
-  for(var i = 0, length = features.length; i < length; i++){
-    var feature = features[i];
-    list += "<option value='#11/"+feature.geometry.coordinates[1]+"/"+feature.geometry.coordinates[0]+"'>"+feature.properties.NOM+"</option>"
+  function findObjectByNOM(array, value) {
+    for (var i = 0; i < array.length; i++) {
+        if (array[i].properties.NOM === value) {
+            return true;
+        }
+    }
+    return false;
   }
-  $('#list-booksmarks').append(list);
-
-  $('#list-booksmarks').removeClass('hide');
-
-  $('#list-booksmarks').selectpicker('refresh');
   
+  updateBookmarks(bookmarks,bookmarks_2018);
+  
+  function updateApp(layer){
+    if("costa1803" === layer){
+      map.setMaxBounds(maxBounds);
+      map1.setMaxBounds(maxBounds);
+      map2.setMaxBounds(maxBounds);
+      updateBookmarks(bookmarks,bookmarks_2018);
+    }else{
+      updateBookmarks(bookmarks,null);
+      map.setMaxBounds(null);
+      map1.setMaxBounds(null);
+      map2.setMaxBounds(null);
+    }
+  }
+
   $('#list-ortos1').on('changed.bs.select', function (e, clickedIndex, newValue, oldValue) {
     var selectedD = $(this).find('option').eq(clickedIndex).val();
     var params = selectedD.split("@#_#@");
     myLayer1.setUrl(params[0]).setParams({layers: params[1]});
     myLayer3.setUrl(params[0]).setParams({layers: params[1]});
+    updateApp(params[1]);
   });
 
   $('#list-ortos2').on('changed.bs.select', function (e, clickedIndex, newValue, oldValue) {
@@ -130,6 +169,7 @@ $(function() {
     var params = selectedD.split("@#_#@");
     myLayer2.setUrl(params[0]).setParams({layers: params[1]});
     myLayer4.setUrl(params[0]).setParams({layers: params[1]});
+    updateApp(params[1]);
   });
 
   var list2 = "";
