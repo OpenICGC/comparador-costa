@@ -102,6 +102,8 @@ $(function() {
   });
 
   function updateBookmarks(total, subgroup){
+	  
+	 
     var features = total.features;
     features.sort(compare);
     var list = [];
@@ -143,24 +145,35 @@ $(function() {
   updateBookmarks(bookmarks,bookmarks_2018);
   
   function updateApp(layer){
-    if("costa1803" === layer){
-      map.setMaxBounds(maxBounds);
-      map1.setMaxBounds(maxBounds);
-      map2.setMaxBounds(maxBounds);
-      updateBookmarks(bookmarks,bookmarks_2018);
-    }else{
-      updateBookmarks(bookmarks,null);
-      map.setMaxBounds(null);
-      map1.setMaxBounds(null);
-      map2.setMaxBounds(null);
-    }
+	  	  
+	  cmb1=$('#list-ortos1').val();
+	  cmb2=$('#list-ortos2').val();
+	  
+	  if((cmb1.indexOf("costa1803")!=-1)||(cmb2.indexOf("costa1803")!=-1)){
+			map.setMaxBounds(maxBounds);
+			  map1.setMaxBounds(maxBounds);
+			  map2.setMaxBounds(maxBounds);
+			  updateBookmarks(bookmarks,bookmarks_2018);		  
+	  }else{
+			updateBookmarks(bookmarks,null);
+			  map.setMaxBounds(null);
+			  map1.setMaxBounds(null);
+			  map2.setMaxBounds(null);
+	  }  
+  
+	  
+	 
+
+	    
   }
+  
 
   $('#list-ortos1').on('changed.bs.select', function (e, clickedIndex, newValue, oldValue) {
     var selectedD = $(this).find('option').eq(clickedIndex).val();
     var params = selectedD.split("@#_#@");
     myLayer1.setUrl(params[0]).setParams({layers: params[1]});
     myLayer3.setUrl(params[0]).setParams({layers: params[1]});
+	
     updateApp(params[1]);
   });
 
@@ -169,6 +182,7 @@ $(function() {
     var params = selectedD.split("@#_#@");
     myLayer2.setUrl(params[0]).setParams({layers: params[1]});
     myLayer4.setUrl(params[0]).setParams({layers: params[1]});
+	
     updateApp(params[1]);
   });
 

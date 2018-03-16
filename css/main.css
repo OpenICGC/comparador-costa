@@ -217,7 +217,7 @@ footer div.row.links div span{
 }
 
 .dropdown-menu>.disabled>a, .dropdown-menu>.disabled>a:focus, .dropdown-menu>.disabled>a:hover {
-  color: #f99;
+  color: #ccc;
 }
 
 @media (max-width: 768px) and (orientation:landscape) {
