@@ -18,7 +18,7 @@ $(function() {
   var map1 = L.map('mapid1',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
   var map2 = L.map('mapid2',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
 
-  var servicio1 = 'http://mapcache.icc.cat/map/bases/service?';
+  var servicio1 = 'https://geoserveis.icgc.cat/map/bases/service?';
   var layer1 = 'orto';
   var attribution1 = 'Mapa &copy; <a href="http://www.icgc.cat">Institut Cartogràfic i Geològic de Catalunya</a>';
 
