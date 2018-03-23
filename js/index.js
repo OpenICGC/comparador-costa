@@ -12,7 +12,7 @@ $(function() {
   var bounds = L.geoJSON(bookmarks_2018).getBounds();
   var maxBounds = [[bounds.getSouth(),bounds.getWest()],[bounds.getNorth(),bounds.getEast()]];
   */
-  var maxBounds = [[41.4346, 2.2439],[42.330, 3.330]];
+  var maxBounds = [[41.4346, 2.2439],[42.450, 3.430]];
 
   var map = L.map('mapid',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
   var map1 = L.map('mapid1',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
