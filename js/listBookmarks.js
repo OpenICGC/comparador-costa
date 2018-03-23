@@ -115,6 +115,9 @@ var bookmarks_2018 = {
         { "type": "Feature", "properties": { "NOM": "Roses", "LON": "3.16831111907959", "LAT": "42.26460631064456" }, "geometry": { "type": "Point", "coordinates": [ 3.16831111907959, 42.26460631064456 ] } },
         { "type": "Feature", "properties": { "NOM": "Cadaqués", "LON": "3.279059529304504", "LAT": "42.288828091667128" }, "geometry": { "type": "Point", "coordinates": [ 3.279059529304504, 42.288828091667128 ] } },
         { "type": "Feature", "properties": { "NOM": "el Port de la Selva", "LON": "3.200462758541107", "LAT": "42.335187658456285" }, "geometry": { "type": "Point", "coordinates": [ 3.200462758541107, 42.335187658456285 ] } },
+        { "type": "Feature", "properties": { "NOM": "Llançà", "LON": "3.158523738384247", "LAT": "42.372713617162304" }, "geometry": { "type": "Point", "coordinates": [ 3.158523738384247, 42.372713617162304 ] } },
+        { "type": "Feature", "properties": { "NOM": "Colera", "LON": "3.156359195709229", "LAT": "42.407535691233541" }, "geometry": { "type": "Point", "coordinates": [ 3.156359195709229, 42.407535691233541 ] } },
+        { "type": "Feature", "properties": { "NOM": "Portbou", "LON": "3.160503208637237", "LAT": "42.427638034929139" }, "geometry": { "type": "Point", "coordinates": [ 3.160503208637237, 42.427638034929139 ] } },
 ]
 };    
 
