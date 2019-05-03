@@ -12,7 +12,11 @@ $(function() {
   var bounds = L.geoJSON(bookmarks_2018).getBounds();
   var maxBounds = [[bounds.getSouth(),bounds.getWest()],[bounds.getNorth(),bounds.getEast()]];
   */
-  var maxBounds = [[41.4346, 2.2439],[42.450, 3.430]];
+  //var maxBounds = [[41.4346, 2.2439],[42.450, 3.430]];
+
+  4.0594 , 40.1495 , -0.6372 , 43.125
+
+  var maxBounds = [[40.1495,-0.6372],[43.125, 4.0594]];
 
   var map = L.map('mapid',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
   var map1 = L.map('mapid1',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
@@ -22,8 +26,14 @@ $(function() {
   var layer1 = 'orto';
   var attribution1 = 'Mapa &copy; <a href="http://www.icgc.cat">Institut Cartogràfic i Geològic de Catalunya</a>';
 
-  var servicio2 = 'https://geoserveis.icgc.cat/icgc_costa201803/wms/service?';
-  var layer2 = 'costa1803';
+  //var servicio2 = 'https://geoserveis.icgc.cat/icgc_costa201803/wms/service?';
+  //var layer2 = 'costa1803';
+
+  //var servicio2 = 'https://mapcache.icgc.cat/map/costa201904/service?';
+
+  var servicio2 = 'https://mapcache.icgc.cat/map/costa201904/service?';
+  var layer2 = 'costa201904';
+
   var attribution2 = 'Mapa &copy; <a href="http://www.icgc.cat">Institut Cartogràfic i Geològic de Catalunya</a>';
 
   var myLayer1 = L.tileLayer.wms(servicio1, {
@@ -31,6 +41,7 @@ $(function() {
     format: 'image/jpeg',
     transparent: true,
     crs: crs25831,
+    backgroungcolor:"#000000",
     attribution : attribution1,
 });
 
@@ -39,6 +50,7 @@ $(function() {
     format: 'image/jpeg',
     transparent: true,
     crs: crs25831,
+    backgroungcolor:"#000000",
     attribution : attribution2,
 });
 
@@ -47,6 +59,7 @@ $(function() {
     format: 'image/jpeg',
     transparent: true,
     crs: crs25831,
+    backgroungcolor:"#000000",
     attribution : attribution1,
 });
 
@@ -55,6 +68,7 @@ $(function() {
     format: 'image/jpeg',
     transparent: true,
     crs: crs25831,
+    backgroungcolor:"#000000",
     attribution : attribution2,
 });
 
@@ -142,7 +156,7 @@ $(function() {
     return false;
   }
   
-  updateBookmarks(bookmarks,bookmarks_2018);
+  updateBookmarks(bookmarks,bookmarks_2019);
   
   function updateApp(layer){
 	  	  
@@ -153,7 +167,15 @@ $(function() {
 			map.setMaxBounds(maxBounds);
 			  map1.setMaxBounds(maxBounds);
 			  map2.setMaxBounds(maxBounds);
-			  updateBookmarks(bookmarks,bookmarks_2018);		  
+        updateBookmarks(bookmarks,bookmarks_2018);	
+        
+    } else if ((cmb1.indexOf("costa201904")!=-1)||(cmb2.indexOf("costa201904")!=-1)){
+
+      map.setMaxBounds(maxBounds);
+      map1.setMaxBounds(maxBounds);
+      map2.setMaxBounds(maxBounds);
+      updateBookmarks(bookmarks,bookmarks_2019);	
+
 	  }else{
 			updateBookmarks(bookmarks,null);
 			  map.setMaxBounds(null);
