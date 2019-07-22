@@ -1,26 +1,25 @@
 $(function() {
   var crs25831 = new L.Proj.CRS('EPSG:25831','+proj=utm +zone=31 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs',
      {
-          resolutions: [1100, 550, 275, 100, 50, 25, 10, 5, 2, 1, 0.5, 0.25]
+          resolutions: [1100, 550, 275, 100, 50, 25, 10, 5, 2, 1, 0.5, 0.25,0.12]
      }
   );
 
   var initPoint = [41.6480, 2.7712];
-  var initZoom = 11;
-  var maxZoom = 11;
+  var initZoom = 18;
+  var maxZoom = 20;
   /*
   var bounds = L.geoJSON(bookmarks_2018).getBounds();
   var maxBounds = [[bounds.getSouth(),bounds.getWest()],[bounds.getNorth(),bounds.getEast()]];
   */
   //var maxBounds = [[41.4346, 2.2439],[42.450, 3.430]];
 
-  4.0594 , 40.1495 , -0.6372 , 43.125
 
   var maxBounds = [[40.1495,-0.6372],[43.125, 4.0594]];
 
-  var map = L.map('mapid',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
-  var map1 = L.map('mapid1',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
-  var map2 = L.map('mapid2',{crs: crs25831, attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
+  var map = L.map('mapid',{ attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
+  var map1 = L.map('mapid1',{ attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
+  var map2 = L.map('mapid2',{ attributionControl: false, maxZoom: maxZoom, center: initPoint, zoom: initZoom, maxBounds: maxBounds});
 
   var servicio1 = 'https://geoserveis.icgc.cat/map/bases/service?';
   var layer1 = 'orto';
@@ -38,36 +37,36 @@ $(function() {
 
   var myLayer1 = L.tileLayer.wms(servicio1, {
     layers: layer1,
-    format: 'image/jpeg',
+    format: 'image/png',
     transparent: true,
-    crs: crs25831,
+    maxZoom: maxZoom,
     backgroungcolor:"#000000",
     attribution : attribution1,
 });
 
   var myLayer2 = L.tileLayer.wms(servicio2, {
     layers: layer2,
-    format: 'image/jpeg',
+    format: 'image/png',
     transparent: true,
-    crs: crs25831,
+    maxZoom: maxZoom,
     backgroungcolor:"#000000",
     attribution : attribution2,
 });
 
   var myLayer3 = L.tileLayer.wms(servicio1, {
     layers: layer1,
-    format: 'image/jpeg',
+    format: 'image/png',
     transparent: true,
-    crs: crs25831,
+    maxZoom: maxZoom,
     backgroungcolor:"#000000",
     attribution : attribution1,
 });
 
   var myLayer4 = L.tileLayer.wms(servicio2, {
     layers: layer2,
-    format: 'image/jpeg',
+    format: 'image/png',
     transparent: true,
-    crs: crs25831,
+    maxZoom: maxZoom,
     backgroungcolor:"#000000",
     attribution : attribution2,
 });
@@ -112,12 +111,13 @@ $(function() {
   $('#list-booksmarks').on('changed.bs.select', function (e, clickedIndex, newValue, oldValue) {
     var selectedD = $(this).find('option').eq(clickedIndex).val();
     var center = hash.parseHash(selectedD);
-    map.setView(center.center, center.zoom);
+    map.setView(center.center, 17);
   });
 
   function updateBookmarks(total, subgroup){
 	  
-	 
+   
+
     var features = total.features;
     features.sort(compare);
     var list = [];

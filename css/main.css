@@ -105,6 +105,7 @@ footer div.row.links div span{
 
 #mapid, #mapid1, #mapid2 {
   height: 100%;
+  background-color: #000000;
 }
 
 .info-btn{

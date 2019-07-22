@@ -4,14 +4,15 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
-    integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
     crossorigin=""/>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
     <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-flat.css" />
     <link rel="stylesheet" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico">
     <title>Comparador costa</title>
   </head>
   <body>
@@ -103,24 +104,34 @@
               </div>
             </div>
           </div>
-          <div class="modal-body">
-            <p>L’Institut Cartogràfic i Geològic de Catalunya(ICGC) ha publicat un servei per comparar imatges aèries que permet avaluar els danys del temporal que han afectat al país.<p>
-              <h5><b>Temporal del 19 al 23 d'abril de 2019.</b></h5>
-              <p>
-                Després de l’episodi de fort onatge que ha patit el litoral català des del 19 al 23 d’Abril, l’ICGC ha realitzat fotografies aèries de la costa de Catalunya. El tram Ampolla fins a Blanes es va volar el 26 d’Abril mentre que el tram Blanes-Roses es preveu volar-ho tan aviat com les condicions meteorològiques ho permetin.
-              </p>
-			<h5><b>Temporal del 1 i 2 de març de 2018.</b></h5>
-            <p>
-              Ortofotos del litoral català, des de Badalona fins al Cap de Creus, després del temporal dels dies 1 i 2 de març, que va provocar afectacions generalitzades en aquest tram de la costa. El tram Badalona-Roses es va volar el 6 de març mentre que el tram restant es va volar el 16 de març.”
-            </p>
-            <h5><b>Temporal del 21 i 22 de gener de 2017.</b></h5>
-            <p>
-              El 24 de gener amb les càmeres aèries embarcades en dos avions de l’ICGC s’ha fotografiat, en un sol dia, tota la costa catalana des del Cap de Creus fins al Delta. A partir de les imatges aèries s’han engegat els processos necessaris per a generar ortoimatges i presentar-les en una aplicació que permeti la comparativa amb ortoimatges d’époques anteriors.
-            </p>      
-            <p style="font-style: italic;">
-               Amb aquesta publicació es vol donar servei als diferents  professionals que necessitin fer una valoració dels danys ocorreguts al litoral català produïts per aquest temporal.
-            </p>
-          </div>
+           <div class="modal-body">
+          <p>Aquest visor permet la comparació d’ortoimatges generades a partir de fotografies aèries captades amb
+            anterioritat i amb posterioritat a temporals que han afectat el litoral del país, amb l’objectiu de
+            facilitar l’avaluació dels danys ocasionats.</p>
+          <p>L’aplicació permet visualitzar i comparar les imatges següents:</p>
+
+
+          <ul>
+
+            <li>Ortofoto vigent.</li>
+            <li>Ortofoto 2016: Ortofoto convencional publicada per l’ICGC, amb imatges prèvies als temporals.</li>
+
+            <li><b>Temporal del 21 i 22 de gener de 2017.</b>:
+            
+              Ortofoto feta a partir de fotografies aèries de tot el litoral de Catalunya, captades en un sol dia, el 24 de gener, amb càmeres aèries embarcades en dos avions de l’ICGC.</li>
+            
+              <li><b>Temporal del 1 i 2 de març de 2018.</b>:
+                Ortofoto feta a partir de fotografies aèries de les zones afectades del litoral, des de Badalona fins al Cap de Creus. El tram Badalona-Roses es va volar el 6 de març; el tram restant, el 16 de març.
+                </li>
+            <li>Costa febrer 2019: Ortofoto prèvia al temporal de l’abril de 2019.</li>
+              <li><b>Temporal del 19 al 23 d'abril de 2019.</b>:
+             Ortofoto feta a partir de fotografies aèries de les zones afectades del litoral, des de l’Ampolla fins a Roses. El tram l’Ampolla-Blanes es va volar el 26 d’abril; el tram Blanes-Roses, el 4 de maig.</li>
+            
+          </ul>
+          <p style="font-style: italic;">
+            Amb aquesta publicació es vol donar servei als diferents professionals que necessitin fer una valoració dels danys provocats per aquests temporals en el litoral català
+          </p>
+        </div>
         </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
@@ -161,8 +172,8 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
-  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
-  integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw=="
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+  integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
   crossorigin=""></script>
   <script src="https://rawgithub.com/kartena/Proj4Leaflet/master/lib/proj4-compressed.js" type="text/javascript"></script>
   <script src="https://rawgithub.com/kartena/Proj4Leaflet/master/src/proj4leaflet.js" type="text/javascript"></script>
